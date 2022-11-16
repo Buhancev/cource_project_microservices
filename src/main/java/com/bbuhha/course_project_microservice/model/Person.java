@@ -31,6 +31,7 @@ public class Person extends BaseEntity
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
 
+
     public Person() {
     }
     public Person(String username, String email, String firstName, String lastName, String password) {

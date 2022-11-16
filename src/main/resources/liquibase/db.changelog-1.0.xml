@@ -1,7 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
 
     <changeSet id="1.0.0" author="maxim.buhancev">
@@ -70,6 +70,34 @@
     </changeSet>
 
     <changeSet id="1.0.2" author="maxim.buhancev">
+        <createTable tableName="library">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="VARCHAR(100)" defaultValue="">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.3" author="maxim.buhancev">
         <createTable tableName="person_roles">
             <column name="person_id" type="BIGINT">
             </column>
@@ -79,7 +107,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1.0.3" author="maxim.buhancev">
+    <changeSet id="1.0.5" author="maxim.buhancev">
         <addForeignKeyConstraint baseColumnNames="person_id"
                                  baseTableName="person_roles"
                                  constraintName="fk_person_roles_person"
@@ -89,7 +117,7 @@
                                  referencedTableName="persons"/>
     </changeSet>
 
-    <changeSet id="1.0.4" author="maxim.buhancev">
+    <changeSet id="1.0.6" author="maxim.buhancev">
         <addForeignKeyConstraint baseColumnNames="role_id"
                                  baseTableName="person_roles"
                                  constraintName="fk_person_roles_roles"
@@ -99,7 +127,7 @@
                                  referencedTableName="roles"/>
     </changeSet>
 
-    <changeSet id="1.0.5" author="maxim.buhancev">
+    <changeSet id="1.0.8" author="maxim.buhancev">
         <insert tableName="roles">
             <column name="name" value="ROLE_USER"/>
         </insert>

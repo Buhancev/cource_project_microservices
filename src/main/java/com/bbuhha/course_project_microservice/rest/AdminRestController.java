@@ -27,14 +27,14 @@ public class AdminRestController
     @GetMapping(value = "users/{id}")
     public ResponseEntity<AdminPersonDto> getUserById(@PathVariable(name = "id") Long id)
     {
-        Person user = personService.findById(id);
+        Person person = personService.findById(id);
 
-        if (user == null)
+        if (person == null)
         {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        AdminPersonDto result = AdminPersonDto.fromPerson(user);
+        AdminPersonDto result = AdminPersonDto.fromPerson(person);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

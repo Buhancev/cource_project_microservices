@@ -47,7 +47,7 @@ public class AuthenticationRestController
         this.personService = personService;
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto)
     {
         try {
@@ -73,9 +73,8 @@ public class AuthenticationRestController
         }
     }
 
-    @PostMapping("register")
-    public ResponseEntity register(@RequestBody RegistrationRequestDto requestDto) {
-
+    @PostMapping("/registration")
+    public ResponseEntity registration(@RequestBody RegistrationRequestDto requestDto) {
 
         Person person = requestDto.toPerson();
 
