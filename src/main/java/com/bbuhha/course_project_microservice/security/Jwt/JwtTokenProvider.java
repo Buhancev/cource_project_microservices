@@ -1,4 +1,4 @@
-package com.bbuhha.course_project_microservice.security.jwt;
+package com.bbuhha.course_project_microservice.security.Jwt;
 
 import com.bbuhha.course_project_microservice.model.Role;
 import io.jsonwebtoken.*;
@@ -27,7 +27,7 @@ public class JwtTokenProvider
     private String secret;
 
     @Value("${jwt.token.expired}")
-    private long validityMilliseconds;
+    private long validityInMilliseconds;
 
 
     @Autowired
@@ -50,7 +50,7 @@ public class JwtTokenProvider
         claims.put("roles", getRoleNames(roles));
 
         Date now = new Date();
-        Date validity = new Date(now.getTime() + validityMilliseconds);
+        Date validity = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()//
                 .setClaims(claims)//

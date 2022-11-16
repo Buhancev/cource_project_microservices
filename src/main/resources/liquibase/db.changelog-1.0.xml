@@ -5,7 +5,7 @@
 
 
     <changeSet id="1.0.0" author="maxim.buhancev">
-        <createTable tableName="users">
+        <createTable tableName="persons">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -70,8 +70,8 @@
     </changeSet>
 
     <changeSet id="1.0.2" author="maxim.buhancev">
-        <createTable tableName="user_roles">
-            <column name="user_id" type="BIGINT">
+        <createTable tableName="person_roles">
+            <column name="person_id" type="BIGINT">
             </column>
 
             <column name="role_id" type="BIGINT">
@@ -80,19 +80,19 @@
     </changeSet>
 
     <changeSet id="1.0.3" author="maxim.buhancev">
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="user_roles"
-                                 constraintName="fk_user_roles_user"
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_roles"
+                                 constraintName="fk_person_roles_person"
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
-                                 referencedTableName="users"/>
+                                 referencedTableName="persons"/>
     </changeSet>
 
     <changeSet id="1.0.4" author="maxim.buhancev">
         <addForeignKeyConstraint baseColumnNames="role_id"
-                                 baseTableName="user_roles"
-                                 constraintName="fk_user_roles_roles"
+                                 baseTableName="person_roles"
+                                 constraintName="fk_person_roles_roles"
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"

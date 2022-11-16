@@ -1,4 +1,4 @@
-package com.bbuhha.course_project_microservice.security.jwt;
+package com.bbuhha.course_project_microservice.security.Jwt;
 
 import org.springframework.security.core.AuthenticationException;
 

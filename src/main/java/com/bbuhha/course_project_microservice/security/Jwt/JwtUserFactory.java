@@ -1,4 +1,5 @@
-package com.bbuhha.course_project_microservice.security.jwt;
+package com.bbuhha.course_project_microservice.security.Jwt;
+
 
 import com.bbuhha.course_project_microservice.model.Person;
 import com.bbuhha.course_project_microservice.model.Role;
@@ -10,20 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public final class JwtPersonFactory {
+public final class JwtUserFactory
+{
 
-    public JwtPersonFactory() {
-    }
+    public JwtUserFactory()
+    {}
 
-    public static JwtPerson create(Person person)
+    public static JwtPerson create(Person user)
     {
         return new JwtPerson(
-                person.getId(),
-                person.getUsername(),
-                person.getPassword(),
-                person.getStatus().equals(Status.ACTIVE),
-                person.getUpdated(),
-                mapToGrantedAuthorities(new ArrayList<>(person.getRoles()))
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                mapToGrantedAuthorities(new ArrayList<>(user.getRoles())),
+                user.getStatus().equals(Status.ACTIVE),
+                user.getUpdated()
         );
     }
 

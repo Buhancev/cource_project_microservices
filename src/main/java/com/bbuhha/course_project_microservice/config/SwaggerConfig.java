@@ -1,4 +1,4 @@
-package com.bbuhha.course_project_microservice.configuration;
+package com.bbuhha.course_project_microservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.bbuhha.course_project_microservice.security.jwt;
+package com.bbuhha.course_project_microservice.security.Jwt;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,9 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Date;
 
-//С точки зрения JWT, он работает не с нашим Person, а со своим
-public class JwtPerson implements UserDetails {
-
+public class JwtPerson implements UserDetails
+{
     private final Long id;
     private final String username;
     private final String password;
@@ -17,21 +16,22 @@ public class JwtPerson implements UserDetails {
     private final Date lastPasswordResetDate;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public JwtPerson(Long id,
-                     String username,
-                     String password,
-                     boolean enabled,
-                     Date lastPasswordResetDate,
-                     Collection<? extends GrantedAuthority> authorities) {
+    public JwtPerson(
+            Long id,
+            String username,
+            String password,
+            Collection<? extends GrantedAuthority> authorities,
+            boolean enabled,
+            Date lastPasswordResetDate
+    )
+    {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.authorities = authorities;
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
-        this.authorities = authorities;
     }
-
-
 
     @JsonIgnore
     public Long getId()
