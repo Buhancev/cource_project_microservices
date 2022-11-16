@@ -8,6 +8,7 @@ import java.util.Date;
 @MappedSuperclass
 @Data
 public class BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
