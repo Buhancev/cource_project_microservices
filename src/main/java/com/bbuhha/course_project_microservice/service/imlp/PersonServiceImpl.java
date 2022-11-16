@@ -15,13 +15,12 @@ import java.util.Optional;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
-
     private final RoleRepository repository;
-
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public PersonServiceImpl(PersonRepository personRepository, RoleRepository repository, BCryptPasswordEncoder passwordEncoder) {
+
         this.personRepository = personRepository;
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
@@ -42,12 +41,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findById(Long id) {
+
         Optional<Person> result = personRepository.findById(id);
 
         if(result.isPresent()) {
             return result.get();
         }
-
         else {
             return null;
         }
@@ -61,7 +60,6 @@ public class PersonServiceImpl implements PersonService {
         if(result.isPresent()) {
             return result.get();
         }
-
         else {
             return null;
         }
