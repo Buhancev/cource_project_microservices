@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "library")
+@Table(name = "vault")
 @Data
-public class Book extends BaseEntity{
+public class Note extends BaseEntity{
 
     @Column(name = "name")
     private String name;

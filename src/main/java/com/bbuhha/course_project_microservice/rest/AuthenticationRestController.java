@@ -2,7 +2,7 @@ package com.bbuhha.course_project_microservice.rest;
 
 
 import com.bbuhha.course_project_microservice.dto.AuthenticationRequestDto;
-import com.bbuhha.course_project_microservice.dto.PersonDto;
+import com.bbuhha.course_project_microservice.dto.PersonDao;
 import com.bbuhha.course_project_microservice.dto.RegistrationRequestDto;
 import com.bbuhha.course_project_microservice.model.Person;
 import com.bbuhha.course_project_microservice.model.Role;
@@ -80,7 +80,7 @@ public class AuthenticationRestController
 
         personService.registration(person);
 
-        PersonDto userDto = PersonDto.fromPerson(person);
+        PersonDao userDto = PersonDao.fromPerson(person);
         return  ResponseEntity.ok(userDto);
     }
 }

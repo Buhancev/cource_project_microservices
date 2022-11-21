@@ -1,6 +1,6 @@
 package com.bbuhha.course_project_microservice.rest;
 
-import com.bbuhha.course_project_microservice.dto.PersonDto;
+import com.bbuhha.course_project_microservice.dto.PersonDao;
 import com.bbuhha.course_project_microservice.model.Person;
 import com.bbuhha.course_project_microservice.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class PersonRestController
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<PersonDto> getUserById(@PathVariable(name = "id") Long id)
+    public ResponseEntity<PersonDao> getUserById(@PathVariable(name = "id") Long id)
     {
         Person person = personService.findById(id);
 
@@ -33,7 +33,7 @@ public class PersonRestController
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        PersonDto result = PersonDto.fromPerson(person);
+        PersonDao result = PersonDao.fromPerson(person);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
