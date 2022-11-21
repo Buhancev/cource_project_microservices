@@ -76,6 +76,8 @@ public class AuthenticationRestController
     @PostMapping("/registration")
     public ResponseEntity registration(@RequestBody RegistrationRequestDto requestDto) {
 
+
+
         Person person = requestDto.toPerson();
 
         personService.registration(person);

@@ -5,7 +5,7 @@ import com.bbuhha.course_project_microservice.model.Note;
 import java.util.List;
 
 public interface NoteService {
-    public void add(Note book);
+    public void saveOrUpdate(Note note);
 
     public List<Note> findAll();
 

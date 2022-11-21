@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,6 +45,9 @@ public class PersonServiceImpl implements PersonService
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setRoles(userRoles);
         person.setStatus(Status.ACTIVE);
+
+        person.setCreated(new Date());
+        person.setUpdated(new Date());
 
         Person registeredPerson = personRepository.save(person);
 

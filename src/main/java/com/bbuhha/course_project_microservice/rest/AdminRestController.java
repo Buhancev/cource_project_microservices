@@ -24,8 +24,8 @@ public class AdminRestController
         this.personService = personService;
     }
 
-    @GetMapping(value = "users/{id}")
-    public ResponseEntity<AdminPersonDto> getUserById(@PathVariable(name = "id") Long id)
+    @GetMapping(value = "persons/{id}")
+    public ResponseEntity<AdminPersonDto> getPersonById(@PathVariable(name = "id") Long id)
     {
         Person person = personService.findById(id);
 

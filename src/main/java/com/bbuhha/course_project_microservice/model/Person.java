@@ -1,6 +1,8 @@
 package com.bbuhha.course_project_microservice.model;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,11 +27,20 @@ public class Person extends BaseEntity
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+
     @JoinTable(name = "person_roles",
             joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(name = "person_notes",
+            joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "note_id", referencedColumnName = "id")})
+    private List<Note> notes;
 
 
     public Person() {
@@ -40,5 +51,9 @@ public class Person extends BaseEntity
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+    }
+
+    public void addNote(Note note) {
+        notes.add(note);
     }
 }

@@ -16,11 +16,11 @@ public class NoteDao {
         return note;
     }
 
-    public static NoteDao fromBook(Note book) {
-        NoteDao bookDao = new NoteDao();
-        bookDao.setName(book.getName());
-        bookDao.setDescription(book.getDescription());
+    public static NoteDao fromNote(Note note) {
+        NoteDao noteDao = new NoteDao();
+        noteDao.setName(note.getName());
+        noteDao.setDescription(note.getDescription());
 
-        return bookDao;
+        return noteDao;
     }
 }
