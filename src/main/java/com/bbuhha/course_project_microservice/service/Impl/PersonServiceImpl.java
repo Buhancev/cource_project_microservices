@@ -93,4 +93,5 @@ public class PersonServiceImpl implements PersonService
         personRepository.deleteById(id);
         log.info("IN delete - user with id: {} successfully deleted");
     }
+
 }

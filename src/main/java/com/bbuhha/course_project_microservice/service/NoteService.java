@@ -6,12 +6,11 @@ import java.util.List;
 
 public interface NoteService {
     public void saveOrUpdate(Note note);
+    public List<Note> findAll(Long ownerId);
 
-    public List<Note> findAll();
+    public Note findNoteByOwnerIdAndId(Long ownerId, Long noteId);
 
-    public Note findByName(String name);
+    public void deleteNoteByOwnerIdAndId(Long ownerId, Long noteId);
 
-    public Note findById(Long id);
 
-    public void deleteById(Long id);
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PersonDao {
+public class PersonDto {
     private Long id;
     private String username;
 
@@ -18,11 +18,11 @@ public class PersonDao {
         return person;
     }
 
-    public static PersonDao fromPerson(Person person) {
-        PersonDao personDao = new PersonDao();
-        personDao.setId(person.getId());
-        personDao.setUsername(person.getUsername());
+    public static PersonDto fromPerson(Person person) {
+        PersonDto personDto = new PersonDto();
+        personDto.setId(person.getId());
+        personDto.setUsername(person.getUsername());
 
-        return personDao;
+        return personDto;
     }
 }

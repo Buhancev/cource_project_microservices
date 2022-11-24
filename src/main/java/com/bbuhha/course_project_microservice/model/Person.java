@@ -35,11 +35,8 @@ public class Person extends BaseEntity
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner")
     @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(name = "person_notes",
-            joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "note_id", referencedColumnName = "id")})
     private List<Note> notes;
 
 
@@ -51,9 +48,5 @@ public class Person extends BaseEntity
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-    }
-
-    public void addNote(Note note) {
-        notes.add(note);
     }
 }
