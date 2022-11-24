@@ -113,4 +113,9 @@ public class PersonServiceImpl implements PersonService
         log.info("IN delete - user with id: {} successfully deleted");
     }
 
+    @Override
+    public void update(Person person) {
+        personRepository.save(person);
+    }
+
 }

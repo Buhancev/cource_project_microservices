@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/notes/")
+@RequestMapping("/api/notes")
 public class NoteRestController {
 
     private final PersonService personService;
@@ -29,7 +29,7 @@ public class NoteRestController {
     }
 
 
-    @GetMapping("/note")
+    @GetMapping("/")
     public ResponseEntity getAllNodes(Principal principal) {
         Person owner =  personService.findByUsername(principal.getName());
         List<NoteDto> result = noteService.findAll(
@@ -41,7 +41,7 @@ public class NoteRestController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/note/{noteId}")
+    @GetMapping("/{noteId}")
     public ResponseEntity getNodeById(Principal principal, @PathVariable Long noteId) {
         Person owner =  personService.findByUsername(principal.getName());
         Note result = noteService.findNoteByOwnerIdAndId(owner.getId(), noteId);
@@ -58,14 +58,14 @@ public class NoteRestController {
         return ResponseEntity.ok(NoteDto.fromNote(newNote));
     }
 
-    @PutMapping("/note/{noteId}")
+    @PutMapping("/{noteId}")
     public ResponseEntity updateNote(Principal principal, @PathVariable Long noteId , @Valid @RequestBody NoteDto noteDto) {
         Person owner =  personService.findByUsername(principal.getName());
         noteService.update(owner.getId(), noteId, noteDto.toNote());
         return ResponseEntity.ok("Note updated");
     }
 
-    @DeleteMapping("/note/{noteId}")
+    @DeleteMapping("/{noteId}")
     public ResponseEntity deleteNote(Principal principal, @PathVariable Long noteId) {
         Person owner =  personService.findByUsername(principal.getName());
         noteService.deleteNoteByOwnerIdAndId(owner.getId(), noteId);

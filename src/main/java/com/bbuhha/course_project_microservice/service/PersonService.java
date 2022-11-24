@@ -9,11 +9,13 @@ public interface PersonService
 {
     public Person registration(Person person);
 
-    List<Person> findAll();
+    public List<Person> findAll();
 
-    Person findByUsername(String username);
+    public Person findByUsername(String username);
 
-    Person findById(Long id);
+    public Person findById(Long id);
 
-    void deleteById(Long id);
+    public void deleteById(Long id);
+
+    public void update(Person person);
 }

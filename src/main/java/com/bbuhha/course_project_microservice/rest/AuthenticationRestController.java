@@ -4,8 +4,10 @@ package com.bbuhha.course_project_microservice.rest;
 import com.bbuhha.course_project_microservice.dto.AuthenticationRequestDto;
 import com.bbuhha.course_project_microservice.dto.PersonDto;
 import com.bbuhha.course_project_microservice.dto.RegistrationRequestDto;
+import com.bbuhha.course_project_microservice.exceptionHandling.NoSuchException;
 import com.bbuhha.course_project_microservice.model.Person;
 import com.bbuhha.course_project_microservice.model.Role;
+import com.bbuhha.course_project_microservice.model.Status;
 import com.bbuhha.course_project_microservice.security.Jwt.JwtTokenProvider;
 import com.bbuhha.course_project_microservice.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/auth/")
+@RequestMapping(value = "/api/auth")
 @Slf4j
 
 public class AuthenticationRestController

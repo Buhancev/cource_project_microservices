@@ -10,12 +10,20 @@ import lombok.Data;
 public class AdminPersonDto {
     private Long id;
     private String username;
+    private String email;
+    private String firstName;
+    private String lastName;
     private String status;
+
+
 
     public Person toPerson() {
         Person person = new Person();
         person.setId(id);
         person.setUsername(username);
+        person.setEmail(email);
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
         person.setStatus(Status.valueOf(status));
         return person;
     }
@@ -24,6 +32,9 @@ public class AdminPersonDto {
         AdminPersonDto adminUserDto = new AdminPersonDto();
         adminUserDto.setId(person.getId());
         adminUserDto.setUsername(person.getUsername());
+        adminUserDto.setEmail(person.getEmail());
+        adminUserDto.setFirstName(person.getFirstName());
+        adminUserDto.setLastName(person.getLastName());
         adminUserDto.setStatus(person.getStatus().name());
         return adminUserDto;
     }
