@@ -4,10 +4,14 @@ import com.bbuhha.course_project_microservice.model.Person;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PersonDto {
     private Long id;
+
+    @NotBlank
     private String username;
 
     public Person toPerson(){

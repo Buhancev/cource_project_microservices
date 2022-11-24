@@ -23,18 +23,5 @@ public class PersonRestController
         this.personService = personService;
     }
 
-    @GetMapping(value = "{id}")
-    public ResponseEntity<PersonDto> getUserById(@PathVariable(name = "id") Long id)
-    {
-        Person person = personService.findById(id);
 
-        if(person == null
-        ){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        PersonDto result = PersonDto.fromPerson(person);
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
 }

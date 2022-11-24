@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +32,8 @@ import java.util.Map;
 
 public class AuthenticationRestController
 {
-
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenProvider jwtTokenProvider;
-
     private final PersonService personService;
 
     @Autowired
@@ -48,41 +46,25 @@ public class AuthenticationRestController
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto)
+    public ResponseEntity login(@Valid @RequestBody AuthenticationRequestDto requestDto)
     {
-        try {
-            String username = requestDto.getUsername();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
-            Person person = personService.findByUsername(username);
+        String username = requestDto.getUsername();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
+        Person person = personService.findByUsername(username);
 
-            if (person == null) {
-                throw new UsernameNotFoundException("User with username: " + username + " not found");
-            }
+        List<Role> roles = person.getRoles();
 
-            List<Role> roles = person.getRoles();
+        String token = jwtTokenProvider.createToken(username, roles);
 
-            String token = jwtTokenProvider.createToken(username, roles);
+        Map<Object, Object> response =
+                Map.of("username", username, "token", token);
 
-            Map<Object, Object> response = new HashMap<>();
-            response.put("username", username);
-            response.put("token", token);
-
-            return ResponseEntity.ok(response);
-        } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username or password");
-        }
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/registration")
-    public ResponseEntity registration(@RequestBody RegistrationRequestDto requestDto) {
-
-
-
-        Person person = requestDto.toPerson();
-
-        personService.registration(person);
-
-        PersonDto userDto = PersonDto.fromPerson(person);
-        return  ResponseEntity.ok(userDto);
+    public ResponseEntity registration(@Valid @RequestBody RegistrationRequestDto requestDto) {
+        PersonDto personDto = PersonDto.fromPerson(personService.registration(requestDto.toPerson()));
+        return  ResponseEntity.ok(personDto);
     }
 }

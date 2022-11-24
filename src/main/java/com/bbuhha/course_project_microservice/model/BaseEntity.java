@@ -18,11 +18,11 @@ public class BaseEntity
 
     @CreatedDate
     @Column(name = "created")
-    private Date created = new Date();
+    private Date created;
 
     @LastModifiedDate
     @Column(name = "updated")
-    private Date updated = new Date();
+    private Date updated;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")

@@ -4,11 +4,17 @@ import com.bbuhha.course_project_microservice.model.Note;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NoteDto {
     Long id;
+
+    @NotBlank(message = "You didn't specify the name, or it's empty")
     String name;
+
+    @NotBlank(message = "You didn't provide a description, or it's empty")
     String description;
 
     public Note toNote(){
