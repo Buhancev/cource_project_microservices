@@ -9,8 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NoteDto {
-    Long id;
-
     @NotBlank(message = "You didn't specify the name, or it's empty")
     String name;
 
@@ -19,7 +17,6 @@ public class NoteDto {
 
     public Note toNote(){
         Note note = new Note();
-        note.setId(id);
         note.setName(name);
         note.setDescription(description);
 
@@ -28,7 +25,6 @@ public class NoteDto {
 
     public static NoteDto fromNote(Note note) {
         NoteDto noteDto = new NoteDto();
-        noteDto.setId(note.getId());
         noteDto.setName(note.getName());
         noteDto.setDescription(note.getDescription());
 
