@@ -10,8 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "persons")
 @Data
-public class Person extends BaseEntity
-{
+public class Person extends BaseEntity {
     @Column(name = "username")
     private String username;
 
@@ -29,7 +28,6 @@ public class Person extends BaseEntity
 
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
-
     @JoinTable(name = "person_roles",
             joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})

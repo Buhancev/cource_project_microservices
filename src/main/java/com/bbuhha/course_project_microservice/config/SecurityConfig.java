@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     
     private static final String ADMIN_ENDPOINT = "/api/admin/**";
     private static final String AUTH_ENDPOINT = "/api/auth/**";
+    private static final String USER_ENDPOINT = "/api/notes/**";
 
     private static final String[] WHITELIST = {
             // -- Swagger UI v2
@@ -58,9 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .authorizeRequests()
                 .antMatchers(WHITELIST).permitAll()
                 .antMatchers(AUTH_ENDPOINT).permitAll()
-                .antMatchers(ADMIN_ENDPOINT).hasAnyRole("ADMIN")
-                .antMatchers("/api/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
+                .antMatchers(USER_ENDPOINT).hasRole("USER")
                 .anyRequest().authenticated()
                     .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
