@@ -51,7 +51,8 @@ public class AuthenticationRestController
     public ResponseEntity login(@Valid @RequestBody AuthenticationRequestDto requestDto)
     {
         String username = requestDto.getUsername();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken
+                (username, requestDto.getPassword()));
         Person person = personService.findByUsername(username);
 
         List<Role> roles = person.getRoles();

@@ -1,7 +1,7 @@
 package com.bbuhha.course_project_microservice.rest;
 
-import com.bbuhha.course_project_microservice.dto.NoteDto;
-import com.bbuhha.course_project_microservice.exceptionHandling.NoSuchException;
+import com.bbuhha.course_project_microservice.dto.NoteDtoRequest;
+import com.bbuhha.course_project_microservice.dto.NoteDtoResponse;
 import com.bbuhha.course_project_microservice.model.Note;
 import com.bbuhha.course_project_microservice.model.Person;
 import com.bbuhha.course_project_microservice.service.NoteService;
@@ -33,9 +33,9 @@ public class NoteRestController {
     @GetMapping("/")
     public ResponseEntity getAllNodes(@ApiIgnore Principal principal) {
         Person owner =  personService.findByUsername(principal.getName());
-        List<NoteDto> result = noteService.findAll(
+        List<NoteDtoResponse> result = noteService.findAll(
                 owner.getId()).stream()
-                              .map(x -> NoteDto.fromNote(x))
+                              .map(x -> NoteDtoResponse.fromNote(x))
                               .collect(Collectors.toList()
                               );
 
@@ -46,21 +46,22 @@ public class NoteRestController {
     public ResponseEntity getNodeById(@ApiIgnore Principal principal, @PathVariable Long noteId) {
         Person owner =  personService.findByUsername(principal.getName());
         Note result = noteService.findNoteByOwnerIdAndId(owner.getId(), noteId);
-        return ResponseEntity.ok(NoteDto.fromNote(result));
+        return ResponseEntity.ok(NoteDtoResponse.fromNote(result));
     }
 
 
     @PostMapping("/note")
-    public ResponseEntity createNote(@ApiIgnore Principal principal, @Valid @RequestBody NoteDto noteDto) {
+    public ResponseEntity createNote(@ApiIgnore Principal principal, @Valid @RequestBody NoteDtoRequest noteDto) {
         Person owner =  personService.findByUsername(principal.getName());
         Note newNote = noteDto.toNote();
         newNote.setOwner(owner);
         noteService.save(newNote);
-        return ResponseEntity.ok(NoteDto.fromNote(newNote));
+        return ResponseEntity.ok(NoteDtoResponse.fromNote(newNote));
     }
 
     @PutMapping("/{noteId}")
-    public ResponseEntity updateNote(@ApiIgnore Principal principal, @PathVariable Long noteId , @Valid @RequestBody NoteDto noteDto) {
+    public ResponseEntity updateNote(@ApiIgnore Principal principal, @PathVariable Long noteId ,
+                                     @Valid @RequestBody NoteDtoRequest noteDto) {
         Person owner =  personService.findByUsername(principal.getName());
         noteService.update(owner.getId(), noteId, noteDto.toNote());
         return ResponseEntity.ok("Note updated");

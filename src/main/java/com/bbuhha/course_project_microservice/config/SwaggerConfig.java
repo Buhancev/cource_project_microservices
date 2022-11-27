@@ -51,7 +51,7 @@ public class SwaggerConfig {
                 "Mircoservice notes.",
                 "1.0",
                 "Terms of service",
-                new Contact("Maxim Buhancev", "yout-note.ru", "maxim.buhancev@gmail.com"),
+                new Contact("Maxim and Sveta", "yout-note.ru", "maxim.buhancev@gmail.com"),
                 "License of API",
                 "API license URL",
                 Collections.emptyList());
