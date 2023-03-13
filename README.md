@@ -28,8 +28,8 @@
 
 ## Документация
 
-[Swagger UI](https://your-note.ru/swagger-ui.html#)
-[WORD документ](https://github.com/Buhancev/cource_project_microservice/blob/main/readme.docx)
+- [Swagger UI](https://your-note.ru/swagger-ui.html#)
+- [WORD документ](https://github.com/Buhancev/cource_project_microservice/blob/main/readme.docx)
 
 
 ## Краткий пример API
