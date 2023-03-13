@@ -29,7 +29,7 @@
 ## Документация
 
 [Swagger UI](https://your-note.ru/swagger-ui.html#)
-
+[WORD документ](https://github.com/Buhancev/cource_project_microservice/blob/main/readme.docx)
 
 
 ## Краткий пример API
@@ -90,7 +90,7 @@ To deploy this project run
 
 Мы будем рады любому сотрудничеству!
 
-Хотите с нами раборать, но не знаете с чего начать?  Читайте `contributing.md`.
+Хотите с нами раборать, но не знаете с чего начать?  Читайте [Сотрудничество с нами](https://github.com/Buhancev/cource_project_microservice/blob/main/CONTRIBUTING.md).
 
 Присоединяйтесь к нашему проекту!
 
