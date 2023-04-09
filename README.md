@@ -1,5 +1,5 @@
 
-![Logo](https://upload.wikimedia.org/wikipedia/commons/6/67/Note.com_Logo%2C_cropped.png)
+![Logo](https://images.squarespace-cdn.com/content/v1/581499b8e58c627afce6221c/1581466535600-K13XTW44G4XOOC0RFPN5/winky.gif?format=500w)
 
 
 ## Авторы
